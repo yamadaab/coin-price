@@ -1,6 +1,6 @@
 {
   "name": "coin-price",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Displays the trading price of bitcoin on each exchange.",
   "main": "index.js",
   "scripts": {
