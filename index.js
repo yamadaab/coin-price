@@ -4,7 +4,7 @@ const axios = require('axios')
 class Coin {
   viewer() {
     console.log('現在１ビットコインの各取引所の取引価格は以下の通りです。')
-    console.log('※この価格はあくまで学習用です。取引を行う際は自己責任でお願い致します。')
+    console.log('※取引を行う際は自己責任でお願い致します。')
     this.bitflyer()
     this.coincheck()
     this.liquid()
