@@ -4,7 +4,7 @@ This library displays the transaction price of Bitcoin.
 
 ## install
 ```
-npm install coin_prices
+npm install coin_price
 ```
 
 ## usage
