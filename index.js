@@ -1,48 +1,47 @@
 #!/usr/bin/env node
 const axios = require('axios')
 
-class Coin {
-  viewer() {
+class BitcoinPriceViewer {
+
+  showEachCompaniesPrice() {
     console.log('現在１ビットコインの各取引所の取引価格は以下の通りです。')
     console.log('※取引を行う際は自己責任でお願い致します。')
-    this.bitflyer()
-    this.coincheck()
-    this.liquid()
+    this.checkBitflyer()
+    this.checkCoincheck()
+    this.checkLiquid()
   }
 
-  price_view(coin_data) {
-    axios.get(coin_data.url)
-      .then(function (response) {
+  checkPrice(companyData) {
+    axios.get(companyData.url)
+      .then(function (response) { 
         const data = response.data
-        console.log( coin_data.coin_name + Math.floor(data.ltp||data.last||data.last_traded_price).toLocaleString() + ' 円')
+        console.log(`${companyData.companyName.padEnd(10, ' ')}: ${Math.floor(data.ltp || data.last || data.last_traded_price).toLocaleString()} 円`)
       })
   }
-}
 
-class Eachcoin extends Coin {
-  bitflyer() {
-    let coin_data = {
-      url: 'https://api.bitflyer.com' + '/v1/ticker' + '',
-      coin_name : 'bitflyer : ',
+  checkBitflyer() {
+    const companyData = {
+      url: 'https://api.bitflyer.com/v1/ticker',
+      companyName: 'bitflyer',
     }
-    this.price_view(coin_data)
+    this.checkPrice(companyData)
   }
 
-  coincheck() {
-    let coin_data = {
-      url: 'https://coincheck.com/' + 'api/ticker',
-      coin_name: 'coincheck: '
+  checkCoincheck() {
+    const companyData = {
+      url: 'https://coincheck.com/api/ticker',
+      companyName: 'coincheck'
     }
-    this.price_view(coin_data)
+    this.checkPrice(companyData)
   }
 
-  liquid() {
-    let coin_data = {
-      url: 'https://api.liquid.com' + '/products/5' + '',
-      coin_name: 'Liquid   : '
+  checkLiquid() {
+    const companyData = {
+      url: 'https://api.liquid.com/products/5',
+      companyName: 'Liquid'
     }
-    this.price_view(coin_data)
+    this.checkPrice(companyData)
   }
 }
 
-new Eachcoin().viewer()
+new BitcoinPriceViewer().showEachCompaniesPrice()
