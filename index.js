@@ -24,7 +24,7 @@ class BitcoinPriceViewer {
       url: 'https://api.bitflyer.com/v1/ticker',
       companyName: 'bitflyer'
     }
-    this.loadCompaniesCoinPrice(companyData)
+    this.showCompaniesCoinPrice(companyData)
   }
 
   showCoincheckPrice() {
@@ -32,7 +32,7 @@ class BitcoinPriceViewer {
       url: 'https://coincheck.com/api/ticker',
       companyName: 'coincheck'
     }
-    this.loadCompaniesCoinPrice(companyData)
+    this.showCompaniesCoinPrice(companyData)
   }
 
   showLiquidPrice() {
@@ -40,7 +40,7 @@ class BitcoinPriceViewer {
       url: 'https://api.liquid.com/products/5',
       companyName: 'Liquid'
     }
-    this.loadCompaniesCoinPrice(companyData)
+    this.showCompaniesCoinPrice(companyData)
   }
 }
 
