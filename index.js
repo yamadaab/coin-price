@@ -11,7 +11,7 @@ class BitcoinPriceViewer {
     this.showLiquidPrice()
   }
 
-  loadCompaniesCoinPrice(companyData) {
+  showCompaniesCoinPrice(companyData) {
     axios.get(companyData.url)
       .then(function (response) {
         const data = response.data
