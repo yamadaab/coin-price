@@ -6,12 +6,12 @@ class BitcoinPriceViewer {
   showEachCompaniesPrice() {
     console.log('現在１ビットコインの各取引所の取引価格は以下の通りです。')
     console.log('※取引を行う際は自己責任でお願い致します。')
-    this.checkBitflyer()
-    this.checkCoincheck()
-    this.checkLiquid()
+    this.showBitflyerPrice()
+    this.showCoincheckPrice()
+    this.showLiquidPrice()
   }
 
-  checkPrice(companyData) {
+  loadCompaniesApi(companyData) {
     axios.get(companyData.url)
       .then(function (response) { 
         const data = response.data
@@ -19,28 +19,28 @@ class BitcoinPriceViewer {
       })
   }
 
-  checkBitflyer() {
+  showBitflyerPrice() {
     const companyData = {
       url: 'https://api.bitflyer.com/v1/ticker',
-      companyName: 'bitflyer',
+      companyName: 'bitflyer'
     }
-    this.checkPrice(companyData)
+    this.loadCompaniesApi(companyData)
   }
 
-  checkCoincheck() {
+  showCoincheckPrice() {
     const companyData = {
       url: 'https://coincheck.com/api/ticker',
       companyName: 'coincheck'
     }
-    this.checkPrice(companyData)
+    this.loadCompaniesApi(companyData)
   }
 
-  checkLiquid() {
+  showLiquidPrice() {
     const companyData = {
       url: 'https://api.liquid.com/products/5',
       companyName: 'Liquid'
     }
-    this.checkPrice(companyData)
+    this.loadCompaniesApi(companyData)
   }
 }
 
