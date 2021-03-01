@@ -11,9 +11,9 @@ class BitcoinPriceViewer {
     this.showLiquidPrice()
   }
 
-  loadCompaniesApi(companyData) {
+  loadCompaniesCoinPrice(companyData) {
     axios.get(companyData.url)
-      .then(function (response) { 
+      .then(function (response) {
         const data = response.data
         console.log(`${companyData.companyName.padEnd(10, ' ')}: ${Math.floor(data.ltp || data.last || data.last_traded_price).toLocaleString()} 円`)
       })
@@ -24,7 +24,7 @@ class BitcoinPriceViewer {
       url: 'https://api.bitflyer.com/v1/ticker',
       companyName: 'bitflyer'
     }
-    this.loadCompaniesApi(companyData)
+    this.loadCompaniesCoinPrice(companyData)
   }
 
   showCoincheckPrice() {
@@ -32,7 +32,7 @@ class BitcoinPriceViewer {
       url: 'https://coincheck.com/api/ticker',
       companyName: 'coincheck'
     }
-    this.loadCompaniesApi(companyData)
+    this.loadCompaniesCoinPrice(companyData)
   }
 
   showLiquidPrice() {
@@ -40,7 +40,7 @@ class BitcoinPriceViewer {
       url: 'https://api.liquid.com/products/5',
       companyName: 'Liquid'
     }
-    this.loadCompaniesApi(companyData)
+    this.loadCompaniesCoinPrice(companyData)
   }
 }
 
